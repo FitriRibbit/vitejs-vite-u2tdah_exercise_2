@@ -6,8 +6,14 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('')
 
-  const handleNoteChange = (event) => {
-    setNewNote(event.target.value)
+  const handleNameChange = (event) => {
+    console.log(event.target.value)
+    setNewName(event.target.value)
+  }
+
+  const handleClick = (event) => {
+    console.log(event.target.value)
+    setNewName(event.target.value)
   }
 
   return (
@@ -15,14 +21,16 @@ const App = () => {
       <h2>Phonebook</h2>
       <form>
         <div>
-          name: <input />
+          name: <input value={newName}
+          onChange={handleNameChange}/>
         </div>
         <div>
-          <button type="submit">add</button>
+          <button button onClick={handleClick}>add</button>
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+      <p>{setPersons}</p> 
+      <p>{newName}</p>      
     </div>
   )
 }
