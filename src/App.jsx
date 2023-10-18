@@ -6,9 +6,8 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('')
 
-  const addNote = (event) => {
-    event.preventDefault()
-    console.log('button clicked', event.target)
+  const handleNoteChange = (event) => {
+    setNewNote(event.target.value)
   }
 
   return (
