@@ -1,19 +1,21 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
-  const [newName, setNewName] = useState('')
+    { name: 'Arto Hellas' },
+  ]);
+  const [newName, setNewName] = useState('');
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
-    setNewName(event.target.value)
-  }
+    console.log(event.target.value);
+    setNewName(event.target.value);
+  };
 
-  const handleClick = (event) => {
-    console.log(event.target.value)
-    setNewName(event.target.value)
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const newPersons = persons.concat( { name: newName } )
+    setPersons(newPersons);
+    setNewName('');
   }
 
   return (
@@ -21,18 +23,21 @@ const App = () => {
       <h2>Phonebook</h2>
       <form>
         <div>
-          name: <input value={newName}
-          onChange={handleNameChange}/>
+          name: <input value={newName} onChange={handleNameChange} />
         </div>
         <div>
-          <button button onClick={handleClick}>add</button>
+          <button onClick={handleAdd}>Add</button>
         </div>
       </form>
       <h2>Numbers</h2>
-      <p>{setPersons}</p> 
-      <p>{newName}</p>      
+      <ul>
+        {persons.map((item) => (
+          <p>{item.name}</p>
+        ))}
+      </ul>
+      <p>{newName}</p>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
