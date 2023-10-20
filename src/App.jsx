@@ -14,8 +14,14 @@ const App = () => {
   const handleAdd = (e) => {
     e.preventDefault();
     const newPersons = persons.concat( { name: newName } )
-    setPersons(newPersons);
+    persons.forEach((item) => {
+      if (item.name === newName) {
+        alert(`${newName} is already added to phonebook`)
+        newPersons.pop();
+      }
+    });
     setNewName('');
+    setPersons(newPersons);
   }
 
   return (
