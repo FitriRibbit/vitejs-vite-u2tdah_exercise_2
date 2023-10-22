@@ -8,6 +8,12 @@ const Filter = (props) => {
   );
 };
 
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+);
+
 const Name = (props) => {
   return (
     <div>
@@ -36,12 +42,6 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [searchNumber, setFilterNumber] = useState('');
   const [newSearchNumber, setFilterNewNumber] = useState(persons);
-
-  const Button = (props) => (
-    <button onClick={props.handleClick}>
-      {props.text}
-    </button>
-  );
 
   const handleNameChange = (event) => {
     console.log(event.target.value);
