@@ -8,6 +8,23 @@ const Filter = (props) => {
   );
 };
 
+const Name = (props) => {
+  return (
+    <div>
+      <p>name: <input value = {props.value} onChange = {props.onChange}/> </p>
+    </div>
+  );
+};
+
+const Number = (props) => {
+  return (
+    <div>
+      <p>number: <input value = {props.value} onChange = {props.onChange}/> </p>
+    </div>
+  );
+};
+
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456', id: 1 },
@@ -19,6 +36,12 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [searchNumber, setFilterNumber] = useState('');
   const [newSearchNumber, setFilterNewNumber] = useState(persons);
+
+  const Button = (props) => (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  );
 
   const handleNameChange = (event) => {
     console.log(event.target.value);
@@ -63,11 +86,9 @@ const App = () => {
         <h3>Add a new</h3>
       <form>
         <div>
-          name: <input value={newName} onChange={handleNameChange} /> <br />
-          number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button onClick={handleAdd}>Add</button>
+          <Name value={newName} onChange={handleNameChange} />
+          <Number value={newNumber} onChange={handleNumberChange} />
+          <Button handleClick={handleAdd} text="Add" />
         </div>
       </form>
       <h2>Numbers</h2>
