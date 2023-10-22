@@ -2,16 +2,15 @@ import { useState } from 'react';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456' },
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
-  const [searchName, setNumber] = useState('');
-
-  const handleSearchChange = (event) => {
-    console.log(event.target.value);
-    setNumber(event.target.value);
-  };
+  const [searchNumber, setFilterNumber] = useState('');
+  const [newSearchNumber, setFilterNewNumber] = useState(persons);
 
   const handleNameChange = (event) => {
     console.log(event.target.value);
@@ -37,11 +36,21 @@ const App = () => {
     setPersons(newPersons);
   }
 
+  const handleSearchChange = (event) => {
+    const searchItem = event.target.value;
+    setFilterNumber(searchItem);
+    const filterNumber = persons.filter((person) => (
+      person.name.toLowerCase().includes(searchItem.toLowerCase())
+    ))
+    setFilterNewNumber(filterNumber);
+  };
+
+
   return (
     <div>
       <h2>Phonebook</h2>
       <div>
-        filter shown with <input value={searchName} onChange={handleSearchChange} /> <br />
+        filter shown with <input value={searchNumber} onChange={handleSearchChange} /> <br />
       </div>
       <h2>add a new</h2>
       <form>
@@ -54,8 +63,8 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-        {persons.map((item) => (
-          <p>{item.name} {item.number}</p>
+        {newSearchNumber.map((person) => (
+          <p>{person.name} {person.number}</p>
         ))}
     </div>
   );
