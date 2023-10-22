@@ -6,6 +6,12 @@ const App = () => {
   ]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
+  const [searchName, setNumber] = useState('');
+
+  const handleSearchChange = (event) => {
+    console.log(event.target.value);
+    setNumber(event.target.value);
+  };
 
   const handleNameChange = (event) => {
     console.log(event.target.value);
@@ -34,6 +40,10 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        filter shown with <input value={searchName} onChange={handleSearchChange} /> <br />
+      </div>
+      <h2>add a new</h2>
       <form>
         <div>
           name: <input value={newName} onChange={handleNameChange} /> <br />
