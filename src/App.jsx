@@ -1,30 +1,7 @@
 import { useState } from 'react';
-
-const Filter = (props) => {
-  return (
-    <div>
-      <p>filter shown with <input value = {props.value} onChange = {props.onChange}/> </p>
-    </div>
-  );
-};
-
-const PersonForm = ({onSubmit, newName, handleNameChange, newNumber, handleNumberChange}) =>
-  <form onSubmit={onSubmit}>
-        <div>
-            name: <input value={newName} onChange={handleNameChange} />
-        </div>
-        <div>
-            number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-            <button type="submit">add</button>
-        </div>
-  </form>
-
-const Persons = ({ people }) => 
-    people.map((person) => 
-      <p> {person.name} {person.number}</p>
-    )
+import Filter from './component/Filter.jsx'
+import PersonForm from './component/PersonForm.jsx'
+import Persons from './component/Persons.jsx'
 
 const App = () => {
   const [persons, setPersons] = useState([
