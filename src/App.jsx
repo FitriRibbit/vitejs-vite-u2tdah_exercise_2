@@ -20,7 +20,7 @@ const App = () => {
         setPersons(response.data)
       })
   }, [])
-  console.log('render', notes.length, 'notes')
+  console.log('render', persons.length, 'notes')
 
 
   const handleNameChange = (event) => {
